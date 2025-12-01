@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: transferService
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transfer_service
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: "1234"
+    hikari:
+      maximum-pool-size: 10      # max DB connections
+      minimum-idle: 5            # min idle connections
+      connection-timeout: 300000 # timeout
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+minio:
+  url: http://localhost:9100
+  access-key: admin
+  secret-key: admin12345
+  bucket: uploads
